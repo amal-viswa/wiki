@@ -2,11 +2,11 @@ version: "3"
 services:
   db:
     image: postgres:11-alpine
-    container_name: aathis_thagaval_thalam_postgres_db
+    container_name: postgres_db
     environment:
-      POSTGRES_DB: aathis_db
-      POSTGRES_PASSWORD: password
-      POSTGRES_USER: user
+      POSTGRES_DB: tadb
+      POSTGRES_PASSWORD: tapassword
+      POSTGRES_USER: tauser
     logging:
       driver: "none"
     restart: unless-stopped
@@ -14,16 +14,16 @@ services:
       - /var/wiki/data:/var/lib/postgresql/data
   wiki:
     image: requarks/wiki:2
-    container_name: aathis_thagaval_thalam_wikijs
+    container_name: wikijs
     depends_on:
       - db
     environment:
       DB_TYPE: postgres
       DB_HOST: db
       DB_PORT: 5432
-      DB_USER: user
-      DB_PASS: password
-      DB_NAME: aathis_db
+      DB_USER: tauser
+      DB_PASS: tapassword
+      DB_NAME: tadb
     restart: unless-stopped
     ports:
       - "3000:3000"
