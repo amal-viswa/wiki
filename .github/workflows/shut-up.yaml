@@ -26,7 +26,7 @@ jobs:
 
     - name: Run update_replicas.py
       run: |
-        python replicas.py . 1  # Change to the desired replica count
+        python replica.py . 1  # Change to the desired replica count
 
     - name: Commit changes
       run: |
